@@ -769,3 +769,25 @@ footer .socials a:hover {
     grid-area: sidebar;
   }
 }
+.tab{
+  margin-left:2em
+}
+
+.tab1{
+  margin-left:3em
+}
+
+.space{
+  margin-bottom:1em;
+  margin-top:1em;
+}
+
+.down{
+  margin-top: 0.8em;
+}
+.md  {
+  --ion-background-color: #121212;
+  --ion-background-color-rgb: 18,18,18;
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255,255,255;
+}

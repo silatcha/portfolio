@@ -268,3 +268,45 @@ const observerIntersectionAnimation = () => {
 observerIntersectionAnimation();
 
 
+function contact() {
+  const email = document.getElementById("email");
+  const message = document.getElementById("message");
+  const lastname = document.getElementById("lastname");
+  const firstname = document.getElementById("firstname");
+
+  const msg =
+    message.value +
+    "\n" +
+    lastname.value +
+    " " +
+    firstname.value +
+    "\n" +
+    email.value;
+  console.log(msg);
+
+  const accountSid = "AC2f681f90459aea7fb0150486e8f3fda7";
+  const authToken = "79c9fdad3d6f3bc7f9a1e3b0ef87b8f7";
+  const twilioPhoneNumber = "+15415161820"; // Your Twilio phone number
+  const recipientPhoneNumber = "+33758725205"; // Recipient's phone number
+
+  const url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
+  const body = new URLSearchParams({
+    To: recipientPhoneNumber,
+    From: twilioPhoneNumber,
+    Body: msg,
+  });
+
+  fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: "Basic " + btoa(`${accountSid}:${authToken}`),
+    },
+    body: body,
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error("Error:", error));
+}
+
+
